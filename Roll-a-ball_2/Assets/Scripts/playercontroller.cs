@@ -35,9 +35,10 @@ public class playercontroller : MonoBehaviour {
 	}
 
 	void SetCountText(){
-		countText.text = "Count: "+count.ToString();
-		if(count>=11){
+		countText.text = count.ToString() + " COINS";
+		if(count>=32){
 			wintext.text = "YOU WIN !!";
+			countText.text="";
 		}
 	}
 }
