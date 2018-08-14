@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class playercontroller : MonoBehaviour {
 
+	public GameObject Winscreen;	
 	private Rigidbody rb;
 	public float speed=100f;
 	private int count;
@@ -35,10 +37,21 @@ public class playercontroller : MonoBehaviour {
 	}
 
 	void SetCountText(){
-		countText.text = count.ToString() + " COINS";
-		if(count>=32){
+		countText.text = count.ToString() + "/32 COINS";
+		if(count>=1){
 			wintext.text = "YOU WIN !!";
 			countText.text="";
+			Time.timeScale = 0f;
+			Winscreendisp();
 		}
+	}
+
+	public void Winscreendisp(){
+		Winscreen.SetActive(true);
+		gameObject.SetActive(false);
+	}
+
+	public void Restart(){
+		SceneManager.LoadScene(1);
 	}
 }
